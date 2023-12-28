@@ -1,0 +1,147 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Javascript</title>
+    </head>
+
+    <style>
+        body {
+            background-color: #e8e7d2; /* 將整個頁面的背景色設為黑色 */
+            color: black; /* 設置文字顏色為白色 */
+        }
+        
+        .outside{
+            position: relative;
+            width: 80%; /* 使用百分比 */
+            max-width: 800px; /* 添加最大寬度以防止過大 */
+            margin:10 auto;
+            border:1px solid blue;
+        }
+
+        .img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .serial{
+            position: absolute;
+            top:10px;
+            left: 10px;
+            background-color: lightblue;
+        }
+
+        .prev{
+            cursor: pointer;
+            position: absolute;
+            left: 5px;
+            top:50%;
+            background-color:rgba(0, 0, 0, 0.1);
+            color:yellow;
+            font-size: 20px;
+        }
+
+        .next{
+            cursor: pointer;
+            position: absolute;
+            right: 5px;
+            top:50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            color:yellow;
+            font-size: 20px;
+        }
+
+        .prev:hover,.next:hover{
+            background-color: blue;
+        }
+
+        .dot{
+            /* width: 9px;
+            height: 9px;
+            margin: 0 5px;
+            border-radius:50%;
+            border:solid black 1px;
+            display: inline-block;
+            cursor:pointer;
+            background-color: lightgrey; */
+        }
+
+    </style>
+
+    <script>
+
+        var pics,now=0,num=4
+
+        function showtime(){
+
+            pics=document.getElementsByClassName('pic');
+            show(now);
+            setTimeout('showtime()',6000);
+            setTimeout('showimg()',6000);
+        }
+
+        function showimg(){
+            pics=document.getElementsByClassName('pic')
+            var i=0;
+            next(pics[i])
+            i+=1;
+        }
+
+        function show(i){
+            now=i;
+            for(var k=0; k<pics.length; k++){
+                pics[k].style.display='none';
+            }
+            pics[now].style.display='block';
+
+            let dots = document.getElementsByClassName("dot");
+            dots[now].style.backgroundColor="darkblue"
+            if(now==0){
+                dots[num-1].style.backgroundColor='lightgrey'
+            }else{
+                dots[now-1].style.backgroundColor='lightgrey'
+            }
+
+
+        }
+
+        function next(){
+            now+=1;
+            if(now>3) now=0;
+            show(now);
+        }
+        function prev(){
+            now-=1;
+            if(now<0) now=num-1;
+            show(now);
+        }
+
+
+    </script>
+
+    <body onload=showtime()>
+        
+
+        <div class="pic">
+            <img class="img" src="音樂祭/1.jpg">
+        </div>
+        <div class="pic">
+            <img class="img" src="音樂祭/2.jpg">
+        </div>
+        <div class="pic">
+            <img class="img" src="音樂祭/3.jpg">
+        </div>
+        <div class="pic">
+            <img class="img" src="音樂祭/4.jpg">
+        </div>
+
+        <div class="prev" onclick="prev()">&lt</div>
+        <div class="next" onclick="next()">&gt</div>
+
+        <div style="text-align: center">
+            <div class="dot" onclick="show(0)"></div>
+            <div class="dot" onclick="show(1)"></div>
+            <div class="dot" onclick="show(2)"></div>
+            <div class="dot" onclick="show(3)"></div>
+        </div>
+    </body>
+</html>
