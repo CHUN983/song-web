@@ -10,7 +10,8 @@
     } else {
         $sql_query="SELECT * FROM user_playlist_song WHERE list_id='".$list_id."'";           
         $result=mysql_query($sql_query);
-        if(mysql_fetch_row($result)){
+
+        if($result){
             while($row=mysql_fetch_row($result)){
                 $sql_query1="SELECT * FROM song WHERE song_id='".$row[1]."'";      
                 $result1=mysql_query($sql_query1);
