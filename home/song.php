@@ -2,7 +2,7 @@
 <?php
     include("connection.php");
 
-    $select_db = @mysql_select_db("song_list");
+    $select_db = @mysql_select_db("local_band");
     if (!$select_db) {
         echo '<br>找不到資料庫!<br>';
     } else {
