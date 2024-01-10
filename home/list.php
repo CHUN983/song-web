@@ -14,14 +14,14 @@ $row=mysql_fetch_row($result);
 $user_id=$row[0]; //使用者編號 可省略印出
 
 //建立新歌單
-if($newlist_name=$_GET["newlist_name"]){
-    $sql = "SELECT MAX(CAST(SUBSTRING(list_id, 3) AS SIGNED)) FROM user_playlist";
-    $result=mysql_query($sql);
-    $row=mysql_fetch_row( $result);
-    //計算下一個id
-    $next_id = 'l_' . ($row[0] + 1);
-    $sql_query = "INSERT INTO `user_playlist` (`list_id`,`user_id`,`list_name`) VALUES ('$next_id','$user_id', '$newlist_name')";
-    $result=mysql_query($sql_query);
+if($newlist_name=$_GET["newlist_name"]){ 
+        $sql = "SELECT MAX(CAST(SUBSTRING(list_id, 3) AS SIGNED)) FROM user_playlist";
+        $result=mysql_query($sql);
+        $row=mysql_fetch_row( $result);
+        //計算下一個id
+        $next_id = 'l_' . ($row[0] + 1);
+        $sql_query = "INSERT INTO `user_playlist` (`list_id`,`user_id`,`list_name`) VALUES ('$next_id','$user_id', '$newlist_name')";
+        $result=mysql_query($sql_query);
 }
 
 //list歌單名稱
@@ -43,7 +43,6 @@ for ($j = 1; $j < $number; $j++) {
     if($j!=$number){
         echo '<br>';
     }
-    echo $list_id[$j];
 }
 
 ?>
