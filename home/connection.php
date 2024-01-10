@@ -2,7 +2,7 @@
     //連接資料庫
     $location="localhost";//連到本機
     $account="root";
-    $password="e20040731";
+    $password="*****";
 
     if(isset($location) && isset($account) && isset($password)){
         $link= mysql_pconnect($location, $account, $password);
