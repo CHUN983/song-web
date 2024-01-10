@@ -1,13 +1,3 @@
-<html>
-    <head>
-        <title>上</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        
-    </body>
-</html>
-
 <?php
 session_start(); 
 $acc = $_SESSION['acc']; // 从会话中获取 $acc 变量
