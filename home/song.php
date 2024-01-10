@@ -8,8 +8,6 @@
 
     <!-- ****************回首頁*************************** -->
     <form method="post" action="song.php">
-        <input type="hidden" id="listIdInput" name="listId" value="0">
-
         <!-- 回首頁按鈕 -->
         <button type="submit">回首頁</button>
     </form>

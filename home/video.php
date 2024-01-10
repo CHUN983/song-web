@@ -1,8 +1,8 @@
 <html>
     <head>
         <?php
-        $list_id=$_GET["list_id"];
-        $list_name=$_GET["list_name"];
+            include("connection.php");
+            $list_id=$_GET["list_id"];
         ?>
         <meta charset="UTF-8">
         <style>
@@ -14,9 +14,12 @@
     </head>
     <body>
         <?php
-            $sql_query="SELECT * FROM user_playlist_song WHERE list_id='".$list_id."'";           
+            $sql_query="SELECT * FROM song WHERE song_id='".$list_id."'";           
             $result=mysql_query($sql_query);
-            echo 
+
+            $row=mysql_fetch_row($result);
+            echo $row[5];
+            
         ?>
     </body>
 
