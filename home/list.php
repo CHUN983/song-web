@@ -29,14 +29,35 @@ $result=mysql_query($sql_query);
 $number=1;
 $list_name[100];
 $list_id[100];
+$create_date[100];
 while($row1=mysql_fetch_row($result)){
     $list_name[$number]=$row1[2];
     $list_id[$number]=$row1[0];
+    $create_date[$number]=$row1[3];
     $number++;
 }
 
 for ($j = 1; $j < $number; $j++) {
     echo '<a href="song.php?list_id='.$list_id[$j].'&list_name='.$list_name[$j].'" target="song">' . $list_name[$j] . '</a>';//傳送到
+    echo '建立日期: '.$create_date[$j];
     echo '<br>';
 }
+?>
+
+ <form method="get" action="list.php">
+        <p>建立新播放清單: <input type="text" name="newlist_name"></p>
+        <p>
+            <input type="submit" name="action" value="建立">
+        </p>
+</form>
+
+<?php
+    $sql = "SELECT MAX(CAST(SUBSTRING(list_id, 3) AS SIGNED)) FROM user_playlist";
+    $result=mysql_query($sql);
+    $row=mysql_fetch_row( $result);
+    //計算下一個id
+    $next_id = 'u_' . ($row[0] + 1);
+    
+    $newlist_name=$_GET["newlist_name"];
+    $sql_query = "INSERT INTO `user_playlist` (`list_id`,`user_id`,`user_password`) VALUES ('$_id','$user_id', '$pas')";
 ?>
