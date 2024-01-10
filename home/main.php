@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Index</title>
+        <title>Local Band</title>
         <meta charset="UTF-8">
     </head>
     
