@@ -10,7 +10,7 @@
         <frame name="list" noresize target="contents" src="list.php"></frame>
     </frameset>
     <frameset rows="350,*">
-        <frame name="info" src="info.php"></frame>
+        <frame name="info" src="start.htm" ></frame>
         <frame name="song" src="song.php"></frame>
     </frameset>
 </frameset>
