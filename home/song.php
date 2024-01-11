@@ -21,8 +21,6 @@
         $list_id=$_GET["list_id"];
         $list_name=$_GET["list_name"];
 
-        $back=$_GET["back"];
-  
         $select_db = @mysql_select_db("local_band");
         if (!$select_db) {
             echo '<br>找不到資料庫!<br>';
