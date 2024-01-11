@@ -71,6 +71,15 @@
         //如果點擊列表出現列表，不然出現首頁
         
         if($list_id){
+
+            //查看是否有$song_id，如果有，代表有刪除
+            $song_id=$_GET['song_id'];
+            if($song_id){
+                $sql_query="DELETE FROM user_playlist_song WHERE song_id ='".$song_id."'";
+                $result=mysql_query($sql_query);
+
+            }
+
             $sql_query="SELECT * FROM user_playlist_song WHERE list_id='".$list_id."'";           
             $result=mysql_query($sql_query);
             if(mysql_num_rows($result)){
@@ -83,7 +92,7 @@
 
 
                     //刪除符號
-                    echo '<div class="delete-button" onclick="confirmDelete()">-</div>';
+                    echo '<div class="delete-button" onclick="confirmDelete(\''.$row[1].'\',\''.$row[0].'\')">-</div>';
                     
                     // 歌名和日期的容器
                     echo '  歌名:' . $info[3];
@@ -92,8 +101,9 @@
                 }
             }
             else{
-               echo '此歌單沒有歌曲!';
+                echo '此歌單沒有歌曲!';
             }
+            
         }
         else{
             echo '<center> <table width=100% border=0 style="background-color: #e8e7d2;">'; // 設置背景色>';

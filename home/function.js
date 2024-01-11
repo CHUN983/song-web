@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function confirmDelete() {
+function confirmDelete(song_id,list_id) {
     // 使用 confirm 函數顯示確認對話框
     var confirmDelete = confirm('確定要刪除嗎？');
 
     // 如果用戶確定要刪除，執行相應的刪除代碼
     if (confirmDelete) {
-        deleteSong();
+        deleteSong(song_id,list_id);
     } else {
         // 可以添加取消刪除時的相應操作
         alert('取消刪除');
@@ -47,7 +47,8 @@ function confirmDelete() {
 }
 
 // 可以根據需要添加刪除歌曲的相應功能
-function deleteSong() {
+function deleteSong(song_id,list_id) {
     // 在這裡添加刪除歌曲的相應代碼
     alert('歌曲已刪除');
+    window.location.href = 'song.php?song_id='+song_id+'&list_id='+list_id;
 }
