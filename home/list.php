@@ -1,3 +1,6 @@
+<style>
+    @import url("style.css");
+</style>
 
 <?php
 session_start(); 
@@ -39,6 +42,7 @@ while($row1=mysql_fetch_row($result)){
 }
 
 for ($j = 1; $j < $number; $j++) {
+    echo '<div class="delete-button" onclick="confirmDelete_list(\''.$list_id[$j].'\')">-</div>';
     echo '<a href="song.php?list_id='.$list_id[$j].'&list_name='.$list_name[$j].'" target="song">' . $list_name[$j] . '</a>';//傳送到
     if($j!=$number){
         echo '<br>';

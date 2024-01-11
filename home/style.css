@@ -1,0 +1,39 @@
+body {
+    background-color: #e8e7d2; /* 設置背景顏色為 #e8e7d2 */
+}
+
+.plusButtonContainer {
+    position: relative;
+    width: 25px; /* 圓的直徑 */
+    height: 25px;
+    border-radius: 50%;
+    background-color: #5D5D32;
+    cursor: pointer;
+}
+
+.plusButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+.delete-button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #BC5252;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    cursor: pointer;
+    font-weight: bold; /* 將字體變粗體 */
+}
