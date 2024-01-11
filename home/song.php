@@ -92,37 +92,7 @@
                 }
             }
             else{
-                echo '<center> <table width=100% border=0 style="background-color: #e8e7d2;">'; // 設置背景色>';
-                echo '<tr>';
-                $i = 1;
-                $sum = 1;
-                while ($sum <= 25) {
-                    
-                    $sql_query = "select * from song where song_id='s_" . $i . "' ";
-                    $result = mysql_query($sql_query);
-                    $row = mysql_fetch_row($result);
-                    
-                 
-                    echo '<td width=20%><center><img src=音樂/'.$sum.'.jpg  width=100 height=100><br>';
-                
-                    echo '<a href="info.php?song_id='.$row[0].'"  target="info">'.$row[3].'</a>';
-                    
-                    //圓形綠色的按鈕
-                    echo '<div class="plusButtonContainer" data-value="'.htmlspecialchars($row[3]).'">
-                    <button class="plusButton">+</button>
-                  </div>';
-
-                    $i += 4;
-                    $sum++;
-                    if($sum % 5 == 1) {
-                        echo '<br>';
-                        echo "<tr>";
-                    }
-                    
-                }
-
-        
-                echo '</table>';
+               echo '此歌單沒有歌曲!';
             }
         }
         else{
