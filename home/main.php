@@ -12,7 +12,7 @@
         <frameset rows="350,*">
             <frameset cols="*,*">
                 <frame name="contents" src="activity.htm"></frame>
-                <frame name="band" scrolling="no" src="band.htm"></frame>
+                <frame name="band"  src="band.htm"></frame>
             </frameset>
             <frame name="song" src="song.php"></frame>
         </frameset>

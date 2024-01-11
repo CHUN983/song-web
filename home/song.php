@@ -4,15 +4,16 @@
             background-color: #e8e7d2; /* 設置背景顏色為 #e8e7d2 */
         }
 
-        #plusButtonContainer {
+        .plusButtonContainer {
             position: relative;
             width: 25px; /* 圓的直徑 */
             height: 25px;
             border-radius: 50%;
-            background-color: green;
+            background-color: #5D5D32;
+            cursor: pointer;
         }
 
-        #plusButton {
+        .plusButton {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -23,8 +24,11 @@
             font-size: 20px;
             cursor: pointer;
         }
+
         
     </style>
+
+    <script src="function.js"></script>
 
     <!-- ****************回首頁*************************** -->
     <form method="get" action="song.php">
@@ -58,7 +62,6 @@
                 $result=mysql_query($sql_query);
                 if(mysql_num_rows($result)){
                 //引入script
-                    echo '<script src="js/button.js"></script>';
                     while($row=mysql_fetch_row($result)){
                         $sql_query1="SELECT * FROM song WHERE song_id='".$row[1]."'";      
                         $result1=mysql_query($sql_query1);
@@ -90,9 +93,9 @@
                     echo '<td width=20%><center><img src=音樂/'.$sum.'.jpg  width=100 height=100><br>';
                     echo '<a href="video.php?list_id='.$row[0].'" target="band">'.$row[3].'</a>';
                     //圓形綠色的按鈕
-                    echo '<div id="plusButtonContainer">
-                            <button id="plusButton">+</button>
-                        </div>';
+                    echo '<div class="plusButtonContainer" data-value="'.htmlspecialchars($row[3]).'">
+                    <button class="plusButton">+</button>
+                  </div>';
 
                     $i += 4;
                     $sum++;
@@ -102,6 +105,7 @@
                     }
                     
                 }
+
         
                 echo '</table>';
             }
