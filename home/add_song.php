@@ -21,7 +21,7 @@ $result=mysql_query($sql_query);
 if ($result) {
     echo '<script>alert("歌曲已成功加入歌單"); window.close();</script>';
 } else {
-    echo '<script>alert("加入歌單失敗");</script>';
+    echo '<script>alert("此歌單已存在!"); window.close();</script>';
 }
 
 

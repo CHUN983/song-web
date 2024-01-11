@@ -42,7 +42,7 @@ while($row1=mysql_fetch_row($result)){
 }
 
 for ($j = 1; $j < $number; $j++) {
-    echo '<a href="add_song.php?song_id='.$song_id.'&list_id='.$list_id[$j].'&user_id='.$user_id.'">' . $list_name[$j] . '</a>';//傳送到
+    echo '<a href="add_song.php?song_id='.$song_id.'&list_id='.$list_id[$j].'">' . $list_name[$j] . '</a>';//傳送到
     if($j!=$number){
         echo '<br>';
     }

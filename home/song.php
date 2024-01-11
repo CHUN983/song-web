@@ -62,6 +62,7 @@
                 $result=mysql_query($sql_query);
                 if(mysql_num_rows($result)){
                 //引入script
+                    
                     while($row=mysql_fetch_row($result)){
                         $sql_query1="SELECT * FROM song WHERE song_id='".$row[1]."'";      
                         $result1=mysql_query($sql_query1);
