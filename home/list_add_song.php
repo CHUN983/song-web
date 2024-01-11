@@ -1,11 +1,24 @@
 
+<style>
+    body {
+        background-color: #e8e7d2; /* 設置背景顏色為 #e8e7d2 */
+    }
+</style>
 <?php
 session_start(); 
 $acc = $_SESSION['acc']; // 从会话中获取 $acc 变量
 echo  $acc.' 的播放清單<br>'; // 输出或使用 $acc
 
+
 include("connection.php");
 @mysql_select_db("local_band");//選擇資料庫
+
+//找到歌曲id
+$song=$_GET["song"];
+$sql_query="SELECT * FROM song WHERE song_name='".$song."'";
+$result=mysql_query($sql_query);
+$row=mysql_fetch_row($result);
+$song_id=$row[0];
 
 //找到帳號所屬的user_id
 $sql_query="SELECT * FROM user WHERE user_name='".$acc."'";           
@@ -13,16 +26,6 @@ $result=mysql_query($sql_query);
 $row=mysql_fetch_row($result);
 $user_id=$row[0]; //使用者編號 可省略印出
 
-//建立新歌單
-if($newlist_name=$_GET["newlist_name"]){ 
-        $sql = "SELECT MAX(CAST(SUBSTRING(list_id, 3) AS SIGNED)) FROM user_playlist";
-        $result=mysql_query($sql);
-        $row=mysql_fetch_row( $result);
-        //計算下一個id
-        $next_id = 'l_' . ($row[0] + 1);
-        $sql_query = "INSERT INTO `user_playlist` (`list_id`,`user_id`,`list_name`) VALUES ('$next_id','$user_id', '$newlist_name')";
-        $result=mysql_query($sql_query);
-}
 
 //list歌單名稱
 $sql_query="SELECT * FROM user_playlist WHERE user_id='".$user_id."'";
@@ -39,17 +42,10 @@ while($row1=mysql_fetch_row($result)){
 }
 
 for ($j = 1; $j < $number; $j++) {
-    echo '<a href="song.php?list_id='.$list_id[$j].'&list_name='.$list_name[$j].'" target="song">' . $list_name[$j] . '</a>';//傳送到
+    echo '<a href="add_song.php?song_id='.$song_id.'&list_id='.$list_id[$j].'">' . $list_name[$j] . '</a>';//傳送到
     if($j!=$number){
         echo '<br>';
     }
 }
 
 ?>
-
-<form method="get" action="list.php">
-        <p>建立新播放清單: <input type="text" name="newlist_name"></p>
-        <p>
-            <input type="submit" name="action" value="建立">
-        </p>
-</form>

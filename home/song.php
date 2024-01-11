@@ -3,8 +3,60 @@
         body {
             background-color: #e8e7d2; /* 設置背景顏色為 #e8e7d2 */
         }
+
+        .plusButtonContainer {
+            position: relative;
+            width: 25px; /* 圓的直徑 */
+            height: 25px;
+            border-radius: 50%;
+            background-color: #5D5D32;
+            cursor: pointer;
+        }
+
+        .plusButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .songInfo {
+            flex: 1; /* 自動填滿剩餘空間 */
+        }
+        .minusButtonContainer {
+            display: flex;
+            align-items: center; /* 垂直置中 */
+            flex-direction: row-reverse; /* 反轉子元素的排列順序 */
+
+            width: 25px; /* 圓的直徑 */
+            height: 25px;
+            border-radius: 50%;
+            background-color: #5D5D32;
+        }
+
+
+        .minusButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
         
     </style>
+
+    <script src="function.js"></script>
 
     <!-- ****************回首頁*************************** -->
     <form method="get" action="song.php">
@@ -36,17 +88,28 @@
                 $result=mysql_query($sql_query);
                 if(mysql_num_rows($result)){
                 //引入script
-                    echo '<script src="js/button.js"></script>';
+                    
                     while($row=mysql_fetch_row($result)){
                         $sql_query1="SELECT * FROM song WHERE song_id='".$row[1]."'";      
                         $result1=mysql_query($sql_query1);
                         $info=mysql_fetch_row($result1);
                         
                         //$info[] 0為歌曲編號 1為歌曲所屬樂團 2為歌曲所屬專輯 3為歌曲名稱 4為歌曲長度
+
+                        echo '<div class="minusButtonContainer">';
                     
-                        echo '<br>歌名:'.$info[3];
-                    
-                        echo '  加入日期:'.$row[2].'<br>';
+                        // 歌名和日期的容器
+                        echo '<div class="songInfo">';
+                        echo '歌名:' . $info[3];
+                        echo '  加入日期:' . $row[2];
+                        echo '</div>';
+
+                        // 圓形紅色減號的按鈕
+                        echo '<div class="minusButtonContainer" data-value="' . htmlspecialchars($row[3]) . '">
+                        <button class="minusButton" >-</button>
+                        </div>';
+                        
+                        echo '</div>';
                     }
                 }
                 else{
@@ -64,13 +127,23 @@
                     $result = mysql_query($sql_query);
         
                     $row = mysql_fetch_row($result);
+                    
                     echo '<td width=20%><center><img src=音樂/'.$sum.'.jpg  width=100 height=100><br>';
                     echo '<a href="video.php?list_id='.$row[0].'" target="band">'.$row[3].'</a>';
+                    //圓形綠色的按鈕
+                    echo '<div class="plusButtonContainer" data-value="'.htmlspecialchars($row[3]).'">
+                    <button class="plusButton">+</button>
+                  </div>';
 
                     $i += 4;
                     $sum++;
-                    if($sum % 5 == 1) echo "<tr>";
+                    if($sum % 5 == 1) {
+                        echo '<br>';
+                        echo "<tr>";
+                    }
+                    
                 }
+
         
                 echo '</table>';
             }
