@@ -5,6 +5,7 @@
     </head>
 
     <style>
+
         body {
             background-color: #e8e7d2; /* 將整個頁面的背景色設為黑色 */
             color: black; /* 設置文字顏色為白色 */
@@ -74,6 +75,29 @@
         .right-side {
             width: 50%; /* 或者根据需要调整宽度 */
         }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 高寬比 */
+        }
+
+        .video-embed {
+            position: absolute;
+            top: 0;
+            left: -300;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img {
+            width: 310px; /* 設置固定寬度 */
+            height: 300px; /* 設置固定高度 */
+            display: block;
+            margin: 0; /* 清除預設 margin */
+            margin-left: 0%; /* 調整左偏移的值 */
+        }
+
     </style>
 
 <?php
@@ -103,12 +127,17 @@
             echo '歌曲長度:'.$info[4].'<br>';
             echo '專輯:'.$album[1].'   發行年份:'.$album[2].'<br>';
             echo '樂團:'.$band[1].'   出道年份:'.$band[2].'<br>';
+            echo '<img class="img" src="樂團/'.$info[1].'.jpg">';
         ?>
     </div>
     <div class="right-side">
-        <?php
-            // 假设$info[5]包含视频的嵌入代码或视频文件的路径
-            echo $info[5];
-        ?>
+        <div class="video-container">
+            <div class="video-embed">
+                <?php
+                    // 假设$info[5]包含视频的嵌入代码或视频文件的路径
+                    echo $info[5];
+                ?>
+            </div>
+        </div>
     </div>
 </div>
