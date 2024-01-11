@@ -25,6 +25,34 @@
             cursor: pointer;
         }
 
+        .songInfo {
+            flex: 1; /* 自動填滿剩餘空間 */
+        }
+        .minusButtonContainer {
+            display: flex;
+            align-items: center; /* 垂直置中 */
+            flex-direction: row-reverse; /* 反轉子元素的排列順序 */
+
+            width: 25px; /* 圓的直徑 */
+            height: 25px;
+            border-radius: 50%;
+            background-color: #5D5D32;
+        }
+
+
+        .minusButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+
         
     </style>
 
@@ -69,10 +97,21 @@
                         $info=mysql_fetch_row($result1);
                         
                         //$info[] 0為歌曲編號 1為歌曲所屬樂團 2為歌曲所屬專輯 3為歌曲名稱 4為歌曲長度
+
+                        echo '<div class="minusButtonContainer">';
                     
-                        echo '<br>歌名:'.$info[3];
-                    
-                        echo '  加入日期:'.$row[2].'<br>';
+                        // 歌名和日期的容器
+                        echo '<div class="songInfo">';
+                        echo '歌名:' . $info[3];
+                        echo '  加入日期:' . $row[2];
+                        echo '</div>';
+
+                        // 圓形紅色減號的按鈕
+                        echo '<div class="minusButtonContainer" data-value="' . htmlspecialchars($row[3]) . '">
+                        <button class="minusButton" >-</button>
+                        </div>';
+                        
+                        echo '</div>';
                     }
                 }
                 else{
