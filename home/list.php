@@ -17,6 +17,15 @@ $result=mysql_query($sql_query);
 $row=mysql_fetch_row($result);
 $user_id=$row[0]; //使用者編號 可省略印出
 
+//刪除歌單
+$list_del=$_GET['list_id'];
+if($list_del){
+    $sql_query="DELETE FROM user_playlist_song WHERE list_id ='".$list_del."'";
+    $result=mysql_query($sql_query);
+    $sql_query="DELETE FROM user_playlist WHERE list_id ='".$list_del."'";
+    $result=mysql_query($sql_query);
+}
+
 //建立新歌單
 if($newlist_name=$_GET["newlist_name"]){ 
         $sql = "SELECT MAX(CAST(SUBSTRING(list_id, 3) AS SIGNED)) FROM user_playlist";
