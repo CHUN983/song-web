@@ -138,7 +138,7 @@
                 $row = mysql_fetch_row($result);
                 
                 echo '<td width=20%><center><img src=音樂/'.$sum.'.jpg  width=100 height=100><br>';
-                echo '<a href="video.php?list_id='.$row[0].'" target="band">'.$row[3].'</a>';
+                echo '<a href="info.php?song_id='.$row[0].'" target="info">'.$row[3].'</a>';
                 //圓形綠色的按鈕
                 echo '<div class="plusButtonContainer" data-value="'.htmlspecialchars($row[3]).'">
                 <button class="plusButton">+</button>
