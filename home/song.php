@@ -3,6 +3,26 @@
         body {
             background-color: #e8e7d2; /* 設置背景顏色為 #e8e7d2 */
         }
+
+        #plusButtonContainer {
+            position: relative;
+            width: 25px; /* 圓的直徑 */
+            height: 25px;
+            border-radius: 50%;
+            background-color: green;
+        }
+
+        #plusButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: none;
+            background-color: transparent;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
         
     </style>
 
@@ -66,12 +86,21 @@
                     $result = mysql_query($sql_query);
         
                     $row = mysql_fetch_row($result);
+                    
                     echo '<td width=20%><center><img src=音樂/'.$sum.'.jpg  width=100 height=100><br>';
                     echo '<a href="video.php?list_id='.$row[0].'" target="band">'.$row[3].'</a>';
+                    //圓形綠色的按鈕
+                    echo '<div id="plusButtonContainer">
+                            <button id="plusButton">+</button>
+                        </div>';
 
                     $i += 4;
                     $sum++;
-                    if($sum % 5 == 1) echo "<tr>";
+                    if($sum % 5 == 1) {
+                        echo '<br>';
+                        echo "<tr>";
+                    }
+                    
                 }
         
                 echo '</table>';
