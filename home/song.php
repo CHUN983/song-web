@@ -56,7 +56,7 @@
                     echo '<div class="delete-button" onclick="confirmDelete(\''.$row[1].'\',\''.$row[0].'\')">-</div>';
                     
                     // 歌名和日期的容器
-                    echo '  歌名:' . $info[3];
+                    echo '歌名: <a href="info.php?song_id='.$info[0].'" target="info">' . $info[3] . '</a>';
                     echo '  加入日期:' . $row[2];
                     echo '<p>';
                 }
