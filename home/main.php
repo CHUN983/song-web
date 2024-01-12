@@ -1,23 +1,20 @@
 <html>
     <head>
-        <title>Index</title>
+        <title>Local Band</title>
         <meta charset="UTF-8">
     </head>
     
-    <frameset cols="250,*" " border="2">
-        <frameset rows="300,*">
-            <frame name="top" scrolling="no" noresize target="contents" src="menu.htm">
-            <frame name="list" noresize target="contents" src="list.php"></frame>
-        </frameset>
-        <frameset rows="350,*">
-            <frameset cols="*,*">
-                <frame name="contents" src="activity.htm"></frame>
-                <frame name="band" scrolling="no" src="band.htm"></frame>
-            </frameset>
-            <frame name="song" src="song.php"></frame>
-        </frameset>
-
+    <frameset cols="250,*" border="2">
+    <frameset rows="300,*">
+        <frame name="top" scrolling="no" noresize target="contents" src="menu.htm">
+        <frame name="list" noresize target="contents" src="list.php"></frame>
     </frameset>
+    <frameset rows="350,*">
+        <frame name="info" src="start.htm" ></frame>
+        <frame name="song" src="song.php"></frame>
+    </frameset>
+</frameset>
+
 </html>
 
 <?php
@@ -93,4 +90,3 @@ include("connection.php");
     }
     
 ?>
-
